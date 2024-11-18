@@ -1,0 +1,23 @@
+.home-page {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* logo */
+.logo-ai {}
+
+.card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.card p {
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,23 @@
+.btn {
+  color: rgb(30, 30, 30);
+  background-color: white;
+  box-shadow: black 0 0 4px -2px;
+  padding: .5rem;
+  outline: 0;
+  /*border: var(--border-default);*/
+  border: none;
+  border-radius: var(--border-radius-default);
+}
+
+.input-field {
+  border: none;
+  box-shadow: black 0 0 4px -2px;
+  padding: .2rem 1rem;
+  font-size: 1.5rem;
+  border-radius: var(--border-radius-default);
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: blue 0 0 4px -1px;
+}
