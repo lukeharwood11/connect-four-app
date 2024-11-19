@@ -34,7 +34,7 @@ export const Select = (props: any) => {
   return (
     <select value={props.value} onClick={(e: any) => console.log(props.value)} onChange={handleChange} className="select">
       {
-        props.options.map((option: Option, i: number) => <option key={i}>{option.name}</option>)
+        props.options.map((option: Option, i: number) => <option value={option.value} key={i}>{option.name}</option>)
       }
     </select>
   );
