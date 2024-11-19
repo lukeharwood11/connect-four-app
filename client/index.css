@@ -1,6 +1,7 @@
 :root {
   --primary: rgb(100, 100, 200);
-
+  --dark-text: rgb(50, 50, 50);
+  --secondary-dark-text: rgb(150, 150, 150);
   --border-radius-default: .25rem;
   --border-default: black 1px solid;
 }
@@ -17,4 +18,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }

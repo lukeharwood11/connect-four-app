@@ -7,6 +7,14 @@
   /*border: var(--border-default);*/
   border: none;
   border-radius: var(--border-radius-default);
+  font-size: 1.5rem;
+  height: 3rem;
+}
+
+.btn:hover {
+  background-color: rgb(240, 240, 240);
+  color: var(--primary);
+  cursor: pointer;
 }
 
 .input-field {
@@ -15,9 +23,21 @@
   padding: .2rem 1rem;
   font-size: 1.5rem;
   border-radius: var(--border-radius-default);
+  height: 3rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input-field:focus {
   outline: none;
   box-shadow: blue 0 0 4px -1px;
+}
+
+.select {
+  border: none;
+  box-shadow: black 0 0 4px -2px;
+  font-size: 1.5rem;
+  padding: .2rem 1rem;
+  border-radius: var(--border-radius-default);
+  height: 3rem;
 }
