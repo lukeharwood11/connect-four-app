@@ -1,4 +1,5 @@
 # Connect Four App - AI
+![badge](https://badgen.net/badge/MLE/Tutorial/blue?icon=link)
 
 This project provides some MLE challenges to gain experience integrating AI into applications!
 
