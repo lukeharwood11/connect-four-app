@@ -66,9 +66,9 @@
   },
   "scripts": {
     "start:client": "node scripts/start.js",
+    "start:server": "fastapi dev --port 8080 ./api/main.py",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "start:server": "fastapi dev --port 8080 ./api/main.py"
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": [

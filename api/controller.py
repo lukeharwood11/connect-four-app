@@ -1,7 +1,7 @@
-from api.agents.base import Agent
-from api.agents.rand import RandomAgent
 from api.agents.minimax import MinimaxAgent
 from api.agents.openai import OpenAIAgent
+from api.agents.rand import RandomAgent
+from api.agents.base import Agent
 from typing import List
 
 
