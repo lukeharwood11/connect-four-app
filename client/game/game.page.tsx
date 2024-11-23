@@ -61,8 +61,7 @@ export const GamePage = () => {
   };
 
   const handleMenu = () => {
-    resetGame();
-    setShowStartModal(true);
+    handleRestart();
     setIsModalOpen(true);
   };
 

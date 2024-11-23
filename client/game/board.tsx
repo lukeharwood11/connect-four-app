@@ -102,17 +102,13 @@ export const Board: React.FC<BoardProps> = ({
     // AI's turn
     setLoading(true);
     try {
-      const response = await Promise.all([
-        fetch(`/api/agent/${agent}`, {
+      const response = await fetch(`/api/agent/${agent}`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ board: newBoard.board }),
-        }),
-        // make it seem like the AI is thinking
-        new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000))
-      ]).then(([response]) => response);
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ board: newBoard.board }),
+      });
 
       if (!response.ok) {
         throw new Error('Failed to get AI move');
