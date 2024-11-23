@@ -42,6 +42,7 @@ This project provides some MLE challenges to gain experience integrating AI into
  
 ### Prerequisites
 1. Ensure you have python installed (this project was built with [Python 3.11](https://www.python.org/downloads/release/python-3119/))
+
 Create a virtual environment with `venv`
 ```bash
 # install virtualenv (if not already installed)
