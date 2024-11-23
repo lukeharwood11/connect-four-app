@@ -260,22 +260,6 @@ export const Board: React.FC<BoardProps> = ({
     return null;
   };
 
-  const resetGame = () => {
-    setGameState({
-      board: Array(6).fill(0).map(() => Array(7).fill(0)),
-      currentPlayer: 1,
-      gameOver: false,
-      winner: null,
-      isError: false,
-      winningMove: undefined
-    });
-  };
-
-  const handleRestart = () => {
-    resetGame();
-    onRestart?.();
-  };
-
   return (
     <div className="game-container">
       <div className="board">
