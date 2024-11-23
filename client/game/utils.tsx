@@ -1,19 +1,24 @@
-
 export const minimaxNames = [
-  "Minnie",
-  "Max",
-  "Milton",
-  "Maple",
-  "Maddie",
-  "May",
+  "MaxMind",
+  "DeepThought",
+  "QuantumMax",
+  "MasterMind",
+  "AlphaLogic",
+  "OmegaMax",
+  "NeuraMind",
+  "SynapseX",
 ];
 
 export const qlearningNames = [
-  "Quincy",
-  "Quilton",
-  "Quill",
-  "Quinn",
-]
+  "QMaster",
+  "NeuralQ",
+  "QuantumQ",
+  "QMind",
+  "DeepQ",
+  "QLogic",
+  "BrainQ",
+  "QIntel",
+];
 
 const randint = (n: number) => {
   return Math.floor(Math.random() * n)
