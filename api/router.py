@@ -6,6 +6,7 @@ controller = Controller()
 
 router = APIRouter(prefix="/api")
 
+
 @router.post("/agent/{agent}")
 async def get_agent_move(agent: str, request: BoardRequest):
     if not controller.is_valid_agent(agent):
@@ -13,7 +14,5 @@ async def get_agent_move(agent: str, request: BoardRequest):
     move = controller.get_move(agent, request.board)
     if move is None:
         raise HTTPException(status_code=400, detail="Invalid board state given.")
-    return {
-        "move": move
-    }
-    
+    return {"move": move}
+

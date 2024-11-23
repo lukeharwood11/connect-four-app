@@ -4,6 +4,7 @@ from api.agents.minimax import MinimaxAgent
 from api.agents.openai import OpenAIAgent
 from typing import List
 
+
 class Controller:
     agent_map = {
         "random": RandomAgent(),

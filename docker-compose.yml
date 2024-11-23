@@ -1,0 +1,15 @@
+services:
+  api:
+    # name our container
+    container_name: api
+    # define how to build the image
+    build:
+      # operate from the root of the project
+      context: .
+      dockerfile: ./docker/Dockerfile
+    # link our port 8080 to the container's port 8080
+    ports:
+      - 8080:8080
+    # pull our environment variables from the .env file into the container
+    env_file:
+      - .env

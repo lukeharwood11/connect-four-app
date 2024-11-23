@@ -1,3 +1,4 @@
-fastapi[standard]==0.115.5
+fastapi[all]==0.115.5
+python-dotenv==1.0.0
 openai==1.55.0
 numpy==2.1.3

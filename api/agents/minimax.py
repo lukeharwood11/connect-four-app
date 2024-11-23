@@ -1,10 +1,11 @@
 from api.agents.base import Agent
 from typing import List, Tuple
-import numpy as np 
+import numpy as np
 import copy
 
+
 class MinimaxAgent(Agent):
-    
+
     MAX_DEPTH = 3
 
     def _get_score(self, board: List[List[int]]) -> int:
@@ -16,38 +17,38 @@ class MinimaxAgent(Agent):
             return -100000
         elif term_out == 0:
             return 0
-            
+
         board = np.array(board)
         score = 0
-        
+
         # Preference for center column
         center_array = board[:, 3]
         center_count = np.sum(center_array == -1)
         score += center_count * 3
-        
+
         # Check all possible windows of 4
         for r in range(6):
             for c in range(7):
                 # Horizontal windows
                 if c <= 3:
-                    window = board[r, c:c+4]
+                    window = board[r, c : c + 4]
                     score += self._evaluate_window(window)
-                
+
                 # Vertical windows
                 if r <= 2:
-                    window = board[r:r+4, c]
+                    window = board[r : r + 4, c]
                     score += self._evaluate_window(window)
-                
+
                 # Diagonal windows (positive slope)
                 if r <= 2 and c <= 3:
-                    window = [board[r+i][c+i] for i in range(4)]
+                    window = [board[r + i][c + i] for i in range(4)]
                     score += self._evaluate_window(window)
-                
+
                 # Diagonal windows (negative slope)
                 if r <= 2 and c <= 3:
-                    window = [board[r+3-i][c+i] for i in range(4)]
+                    window = [board[r + 3 - i][c + i] for i in range(4)]
                     score += self._evaluate_window(window)
-        
+
         return score
 
     def _evaluate_window(self, window) -> int:
@@ -86,23 +87,23 @@ class MinimaxAgent(Agent):
         for x in range(6):
             for y in range(7):
                 if x < 3:
-                    if np.all(board[x:x+4, y] == 1):
+                    if np.all(board[x : x + 4, y] == 1):
                         return 1
-                    elif np.all(board[x:x+4, y] == -1):
+                    elif np.all(board[x : x + 4, y] == -1):
                         return -1
                 if y < 4:
-                    if np.all(board[x, y:y+4] == 1):
+                    if np.all(board[x, y : y + 4] == 1):
                         return 1
-                    elif np.all(board[x, y:y+4] == -1):
+                    elif np.all(board[x, y : y + 4] == -1):
                         return -1
                 if x < 3 and y < 4:
-                    if np.sum(board[x:x+4, y:y+4] * right_diagonal) == 4:
+                    if np.sum(board[x : x + 4, y : y + 4] * right_diagonal) == 4:
                         return 1
-                    elif np.sum(board[x:x+4, y:y+4] * right_diagonal) == -4:
+                    elif np.sum(board[x : x + 4, y : y + 4] * right_diagonal) == -4:
                         return -1
-                    if np.sum(board[x:x+4, y:y+4] * left_diagonal) == 4:
+                    if np.sum(board[x : x + 4, y : y + 4] * left_diagonal) == 4:
                         return 1
-                    elif np.sum(board[x:x+4, y:y+4] * left_diagonal) == -4:
+                    elif np.sum(board[x : x + 4, y : y + 4] * left_diagonal) == -4:
                         return -1
         if np.all(board != 0):
             return 0
@@ -116,26 +117,35 @@ class MinimaxAgent(Agent):
                 valid_moves.append(col)
         return valid_moves
 
-    def minimax(self, board: List[List[int]], depth: int, alpha: float, beta: float, maximizing_player: bool) -> Tuple[int, int]:
+    def minimax(
+        self,
+        board: List[List[int]],
+        depth: int,
+        alpha: float,
+        beta: float,
+        maximizing_player: bool,
+    ) -> Tuple[int, int]:
         valid_moves = self._get_valid_moves(board)
         terminal_state = self._is_terminal(board)
-        
+
         if depth == self.MAX_DEPTH or terminal_state is not None or not valid_moves:
             # if it's the next move, it's weighted more
             return self._get_score(board) / (depth + 1), None
 
         if maximizing_player:
-            value = float('-inf')
+            value = float("-inf")
             column = np.random.choice(valid_moves)
             for move in valid_moves:
                 if move == 3:
                     valid_moves.insert(0, valid_moves.pop(valid_moves.index(move)))
-                    
+
                 for row in range(5, -1, -1):
                     if board[row][move] == 0:
                         board_copy = copy.deepcopy(board)
                         board_copy[row][move] = -1
-                        eval_score, _ = self.minimax(board_copy, depth + 1, alpha, beta, False)
+                        eval_score, _ = self.minimax(
+                            board_copy, depth + 1, alpha, beta, False
+                        )
                         if eval_score > value:
                             value = eval_score
                             column = move
@@ -145,14 +155,16 @@ class MinimaxAgent(Agent):
                         break
             return value, column
         else:
-            value = float('inf')
+            value = float("inf")
             column = np.random.choice(valid_moves)
             for move in valid_moves:
                 for row in range(5, -1, -1):
                     if board[row][move] == 0:
                         board_copy = copy.deepcopy(board)
                         board_copy[row][move] = 1
-                        eval_score, _ = self.minimax(board_copy, depth + 1, alpha, beta, True)
+                        eval_score, _ = self.minimax(
+                            board_copy, depth + 1, alpha, beta, True
+                        )
                         if eval_score < value:
                             value = eval_score
                             column = move
@@ -161,10 +173,7 @@ class MinimaxAgent(Agent):
                             break
                         break
             return value, column
-    
+
     def get_move(self, board: List[List[int]]) -> int | None:
-        _, move = self.minimax(board, 0, float('-inf'), float('inf'), True)
+        _, move = self.minimax(board, 0, float("-inf"), float("inf"), True)
         return move
-
-
-        
