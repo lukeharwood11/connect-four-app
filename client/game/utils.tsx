@@ -25,9 +25,9 @@ const randint = (n: number) => {
 }
 
 export const getRandomName = (aiType: string) => {
-  if (aiType == "minimax") {
+  if (aiType === "minimax") {
     return minimaxNames[randint(minimaxNames.length)];
-  } else if (aiType == "ql") {
+  } else if (aiType === "ql") {
     return qlearningNames[randint(qlearningNames.length)];
   } else {
     return "AI";

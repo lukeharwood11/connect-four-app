@@ -8,7 +8,7 @@ import { GameErrorModal } from "../components/game-error-modal";
 
 export const GamePage = () => {
   const [agent, setAgent] = useState('minimax');
-  const aiName = getRandomName(agent);
+  const [aiName, setAiName] = useState('');
   const [playerName, setPlayerName] = useState("Player One");
   const [isPlayerOneTurn, setIsPlayerOneTurn] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -28,6 +28,7 @@ export const GamePage = () => {
     setGameOver(false);
     setWinner('');
     setHasGameStarted(false);
+    setAiName(getRandomName(agent));
   };
 
   const getAgentDisplayName = (agentType: string) => {
@@ -44,6 +45,7 @@ export const GamePage = () => {
     setIsModalOpen(false);
     setGameOver(false);
     setGameError(null);
+    setAiName(getRandomName(agent));
   };
 
   const handleGameOver = (winner: string) => {

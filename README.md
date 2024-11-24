@@ -3,6 +3,8 @@
 
 This project provides some MLE challenges to gain experience integrating AI into applications!
 
+![Connect4](./img/Connect4.gif)
+
 ## Getting Started
 
 ### Project structure
